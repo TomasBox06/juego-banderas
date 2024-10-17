@@ -1,0 +1,40 @@
+.header {
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  &-container {
+    height: 75px;
+    width: 100%;
+  }
+  &-line {
+    width: 100%;
+    height: 5px;
+    background-color: transparent;
+    transform-origin: left;
+  }
+  &-line--animation {
+    width: 100%;
+    height: 5px;
+    background-color: transparent;
+    transform-origin: left;
+    animation: shrink 15s linear forwards;
+    background-color: #141414;
+  }
+
+  & p {
+    color: white;
+    font-size: 24px;
+  }
+}
+
+// @keyframes shrink {
+//   from {
+//     background-color: blue;
+//     width: 100%;
+//   }
+//   to {
+//     background-color: blue;
+//     width: 0;
+//   }
+// }

@@ -1,0 +1,29 @@
+@use "header";
+@use "flags";
+@use "guess";
+@use "mixins";
+@use "modal";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #131313;
+}
+
+.container {
+  height: 800px;
+  width: 500px;
+  background-color: #191919;
+  border-radius: 20px;
+  position: relative;
+}

@@ -1,0 +1,21 @@
+.modal-container {
+  height: 800px;
+  width: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  position: absolute;
+  top: calc(50% - 400px);
+  left: calc(50% - 400px);
+  background-color: #181818;
+  border-radius: 20px;
+  color: white;
+  & p {
+    font-size: 80px;
+    font-weight: 700;
+  }
+  & h2 {
+    font-size: 100px;
+  }
+}

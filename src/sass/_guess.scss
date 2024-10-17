@@ -1,0 +1,41 @@
+@use "mixins" as mix;
+
+.guess {
+  width: 400px;
+  display: flex;
+  padding-top: 50px;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 15px;
+  &-button {
+    @include mix.guess-button;
+  }
+  &-start {
+    @include mix.guess-button;
+    margin-top: 30px;
+    background-color: yellow;
+    color: black;
+    font-weight: 700;
+    &:hover {
+      opacity: 0.8;
+    }
+    &:active {
+      opacity: 0.7;
+    }
+  }
+  &-correct {
+    @include mix.guess-button;
+  }
+  &-wrong {
+    @include mix.guess-button;
+  }
+  &-correct:focus {
+    @include mix.guess-button;
+    background-color: green;
+  }
+  &-wrong:focus {
+    @include mix.guess-button;
+    background-color: red;
+  }
+}

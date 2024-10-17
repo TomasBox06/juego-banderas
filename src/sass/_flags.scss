@@ -1,0 +1,10 @@
+.flags {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 40px;
+  position: relative;
+  & img {
+    width: 390px;
+  }
+}

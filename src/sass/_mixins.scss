@@ -1,0 +1,12 @@
+@mixin guess-button {
+  width: 400px;
+  height: 50px;
+  background: none;
+  border: 1px solid white;
+  border-radius: 20px;
+  color: white;
+  font-size: 15px;
+  &:hover {
+    cursor: pointer;
+  }
+}

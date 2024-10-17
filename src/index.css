@@ -1,0 +1,181 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+.header {
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.header-container {
+  height: 75px;
+  width: 100%;
+}
+.header-line {
+  width: 100%;
+  height: 5px;
+  background-color: transparent;
+  transform-origin: left;
+}
+.header-line--animation {
+  width: 100%;
+  height: 5px;
+  background-color: transparent;
+  transform-origin: left;
+  animation: shrink 15s linear forwards;
+  background-color: #141414;
+}
+.header p {
+  color: white;
+  font-size: 24px;
+}
+
+.flags {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 40px;
+  position: relative;
+}
+.flags img {
+  width: 390px;
+}
+
+.guess {
+  width: 400px;
+  display: flex;
+  padding-top: 50px;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 15px;
+}
+.guess-button {
+  width: 400px;
+  height: 50px;
+  background: none;
+  border: 1px solid white;
+  border-radius: 20px;
+  color: white;
+  font-size: 15px;
+}
+.guess-button:hover {
+  cursor: pointer;
+}
+.guess-start {
+  width: 400px;
+  height: 50px;
+  background: none;
+  border: 1px solid white;
+  border-radius: 20px;
+  color: white;
+  font-size: 15px;
+  margin-top: 30px;
+  background-color: yellow;
+  color: black;
+  font-weight: 700;
+}
+.guess-start:hover {
+  cursor: pointer;
+}
+.guess-start:hover {
+  opacity: 0.8;
+}
+.guess-start:active {
+  opacity: 0.7;
+}
+.guess-correct {
+  width: 400px;
+  height: 50px;
+  background: none;
+  border: 1px solid white;
+  border-radius: 20px;
+  color: white;
+  font-size: 15px;
+}
+.guess-correct:hover {
+  cursor: pointer;
+}
+.guess-wrong {
+  width: 400px;
+  height: 50px;
+  background: none;
+  border: 1px solid white;
+  border-radius: 20px;
+  color: white;
+  font-size: 15px;
+}
+.guess-wrong:hover {
+  cursor: pointer;
+}
+.guess-correct:focus {
+  width: 400px;
+  height: 50px;
+  background: none;
+  border: 1px solid white;
+  border-radius: 20px;
+  color: white;
+  font-size: 15px;
+  background-color: green;
+}
+.guess-correct:focus:hover {
+  cursor: pointer;
+}
+.guess-wrong:focus {
+  width: 400px;
+  height: 50px;
+  background: none;
+  border: 1px solid white;
+  border-radius: 20px;
+  color: white;
+  font-size: 15px;
+  background-color: red;
+}
+.guess-wrong:focus:hover {
+  cursor: pointer;
+}
+
+.modal-container {
+  height: 800px;
+  width: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  position: absolute;
+  top: calc(50% - 400px);
+  left: calc(50% - 400px);
+  background-color: #181818;
+  border-radius: 20px;
+  color: white;
+}
+.modal-container p {
+  font-size: 80px;
+  font-weight: 700;
+}
+.modal-container h2 {
+  font-size: 100px;
+}
+
+* {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #131313;
+}
+
+.container {
+  height: 800px;
+  width: 500px;
+  background-color: #191919;
+  border-radius: 20px;
+  position: relative;
+}
+
+/*# sourceMappingURL=index.css.map */
