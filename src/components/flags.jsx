@@ -79,8 +79,16 @@ import nau from "../assets/hard/nau.png";
 import nep from "../assets/hard/nep.png";
 
 export default function Flags() {
-  const [game, setGame] = useState(true);
+  let [data, setData] = useState(null);
 
+  fetch("http://localhost:3000/0")
+    .then((response) => response.json())
+    .then((data) => {
+      setData(data);
+    })
+    .catch((error) => console.error("Error:", error));
+
+  const [game, setGame] = useState(true);
   let [score, setScore] = useState(0);
   let [finalScore, setFinalScore] = useState(0);
   let [wrongButton, setWrongButton] = useState(null);
@@ -107,160 +115,45 @@ export default function Flags() {
   const [newFlag3, setNewFlag3] = useState(null);
   const [newFlag4, setNewFlag4] = useState(null);
 
-  const posibleOptions = [
-    [
-      { country: "España", src: esp },
-      { country: "Francia", src: fra },
-      { country: "Gran Bretaña", src: grb },
-      { country: "Italia", src: ita },
-      { country: "Perú", src: per },
-      { country: "Portugal", src: por },
-      { country: "Uruguay", src: uru },
-      { country: "Estados Unidos", src: usa },
-      { country: "Venezuela", src: ven },
-      { country: "México", src: mex },
-    ],
-    [
-      { country: "Albania", src: alb },
-      { country: "Andorra", src: and },
-      { country: "Arabia Saudita", src: ara },
-      { country: "Armenia", src: arm },
-      { country: "Australia", src: aus },
-      { country: "Azerbayan", src: aze },
-      { country: "Belice", src: bel },
-      { country: "Bélgica", src: belg },
-      { country: "Bielorrusia", src: bie },
-      { country: "Bosnia y Herzegovina", src: bos },
-    ],
-    [
-      { country: "Bulgaria", src: bul },
-      { country: "Chile", src: chi },
-      { country: "Corea Del Norte", src: corn },
-      { country: "Corea Del Sur", src: cors },
-      { country: "Costa Rica", src: cos },
-      { country: "Croacia", src: cro },
-      { country: "Dinamarca", src: din },
-      { country: "Escocia", src: esc },
-      { country: "Eslovenia", src: eslo },
-      { country: "Eslovaquia", src: esl },
-    ],
-    [
-      { country: "Estonia", src: est },
-      { country: "Finlandia", src: fin },
-      { country: "Gales", src: gal },
-      { country: "Georgia", src: geo },
-      { country: "Grecia", src: gre },
-      { country: "Guatemala", src: gua },
-      { country: "Guyana", src: guy },
-      { country: "Honduras", src: hon },
-      { country: "Hungria", src: hun },
-      { country: "Inglaterra", src: ing },
-    ],
-    [
-      { country: "Algeria", src: alg },
-      { country: "Angola", src: ang },
-      { country: "Bangladesh", src: ban },
-      { country: "Botswana", src: bot },
-      { country: "Burkina Faso", src: bur },
-      { country: "Burundi", src: buru },
-      { country: "Camerún", src: cam },
-      { country: "Cabo Verde", src: cap },
-      { country: "República Centroafricana", src: cen },
-      { country: "Comoras", src: com },
-    ],
-    [
-      { country: "Algeria", src: alg },
-      { country: "Angola", src: ang },
-      { country: "Bangladesh", src: ban },
-      { country: "Botswana", src: bot },
-      { country: "Burkina Faso", src: bur },
-      { country: "Burundi", src: buru },
-      { country: "Camerún", src: cam },
-      { country: "Cabo Verde", src: cap },
-      { country: "República Centroafricana", src: cen },
-      { country: "Comoras", src: com },
-      { country: "Estonia", src: est },
-      { country: "Finlandia", src: fin },
-      { country: "Gales", src: gal },
-      { country: "Georgia", src: geo },
-      { country: "Grecia", src: gre },
-      { country: "Guatemala", src: gua },
-      { country: "Guyana", src: guy },
-      { country: "Honduras", src: hon },
-      { country: "Hungria", src: hun },
-      { country: "Inglaterra", src: ing },
-      { country: "Bulgaria", src: bul },
-      { country: "Chile", src: chi },
-      { country: "Corea Del Norte", src: corn },
-      { country: "Corea Del Sur", src: cors },
-      { country: "Costa Rica", src: cos },
-      { country: "Croacia", src: cro },
-      { country: "Dinamarca", src: din },
-      { country: "Escocia", src: esc },
-      { country: "Eslovenia", src: eslo },
-      { country: "Eslovaquia", src: esl },
-      { country: "Albania", src: alb },
-      { country: "Andorra", src: and },
-      { country: "Arabia Saudita", src: ara },
-      { country: "Armenia", src: arm },
-      { country: "Australia", src: aus },
-      { country: "Azerbayan", src: aze },
-      { country: "Belice", src: bel },
-      { country: "Bélgica", src: belg },
-      { country: "Bielorrusia", src: bie },
-      { country: "Bosnia y Herzegovina", src: bos },
-      { country: "España", src: esp },
-      { country: "Francia", src: fra },
-      { country: "Gran Bretaña", src: grb },
-      { country: "Italia", src: ita },
-      { country: "Perú", src: per },
-      { country: "Portugal", src: por },
-      { country: "Uruguay", src: uru },
-      { country: "Estados Unidos", src: usa },
-      { country: "Venezuela", src: ven },
-      { country: "México", src: mex },
-    ],
-  ];
-
   let [button1, setButton1] = useState(null);
   let [button2, setButton2] = useState(null);
   let [button3, setButton3] = useState(null);
   let [button4, setButton4] = useState(null);
 
   const randomizeFlags = () => {
-    let randomIndex = Math.floor(Math.random() * posibleOptions[0].length);
-    let randomIndex2 = Math.floor(Math.random() * posibleOptions[5].length);
-    let randomIndex3 = Math.floor(Math.random() * posibleOptions[5].length);
-    let randomIndex4 = Math.floor(Math.random() * posibleOptions[5].length);
+    let randomIndex = Math.floor(Math.random() * data.length);
+    let randomIndex2 = Math.floor(Math.random() * data.length);
+    let randomIndex3 = Math.floor(Math.random() * data.length);
+    let randomIndex4 = Math.floor(Math.random() * data.length);
 
-    const newFlag = posibleOptions[level][randomIndex];
-    const newFlag2 = posibleOptions[5][randomIndex2].country;
-    const newFlag3 = posibleOptions[5][randomIndex3].country;
-    const newFlag4 = posibleOptions[5][randomIndex4].country;
+    const newFlag = data[randomIndex];
+    const newFlag2 = data[randomIndex2];
+    const newFlag3 = data[randomIndex3];
+    const newFlag4 = data[randomIndex4];
 
     setNewFlag(newFlag);
 
     const randomIndexButtons = Math.floor(Math.random() * 4);
     if (randomIndexButtons === 0) {
-      setButton1(newFlag.country);
-      setButton2(newFlag2);
-      setButton3(newFlag3);
-      setButton4(newFlag4);
+      setButton1(newFlag.name);
+      setButton2(newFlag2.name);
+      setButton3(newFlag3.name);
+      setButton4(newFlag4.name);
     } else if (randomIndexButtons === 1) {
-      setButton2(newFlag.country);
-      setButton1(newFlag2);
-      setButton3(newFlag3);
-      setButton4(newFlag4);
+      setButton2(newFlag.name);
+      setButton1(newFlag2.name);
+      setButton3(newFlag3.name);
+      setButton4(newFlag4.name);
     } else if (randomIndexButtons === 2) {
-      setButton3(newFlag.country);
-      setButton1(newFlag2);
-      setButton2(newFlag3);
-      setButton4(newFlag4);
+      setButton3(newFlag.name);
+      setButton1(newFlag2.name);
+      setButton2(newFlag3.name);
+      setButton4(newFlag4.name);
     } else {
-      setButton4(newFlag.country);
-      setButton1(newFlag2);
-      setButton2(newFlag3);
-      setButton3(newFlag4);
+      setButton4(newFlag.name);
+      setButton1(newFlag2.name);
+      setButton2(newFlag3.name);
+      setButton3(newFlag4.name);
     }
     setPlay(true);
     if (level <= 3) {
@@ -278,7 +171,7 @@ export default function Flags() {
   };
 
   const checkButton1 = () => {
-    if (button1 === newFlag.country) {
+    if (button1 == newFlag.name) {
       setCorrect(true);
       setCorrect2(false);
       setCorrect3(false);
@@ -295,7 +188,7 @@ export default function Flags() {
     setPlay(false);
   };
   const checkButton2 = () => {
-    if (button2 === newFlag.country) {
+    if (button2 == newFlag.name) {
       setCorrect(false);
       setCorrect2(true);
       setCorrect3(false);
@@ -312,7 +205,7 @@ export default function Flags() {
     setPlay(false);
   };
   const checkButton3 = () => {
-    if (button3 === newFlag.country) {
+    if (button3 == newFlag.name) {
       setCorrect(false);
       setCorrect2(false);
       setCorrect3(true);
@@ -329,7 +222,7 @@ export default function Flags() {
     setPlay(false);
   };
   const checkButton4 = () => {
-    if (button4 === newFlag.country) {
+    if (button4 == newFlag.name) {
       setCorrect(false);
       setCorrect2(false);
       setCorrect3(false);
@@ -357,12 +250,11 @@ export default function Flags() {
       </header>
       <div className="flags-container">
         <div className="flags">
-          {newFlag && <img src={newFlag.src} alt="country flag" />}
+          {newFlag && <img src={newFlag.flag} alt="country flag" />}
         </div>
       </div>
       <div className="guess">
         <button
-          disabled={isDisabled}
           className={`${correct ? "guess-correct" : ""} ${
             wrongButton === 1 ? "guess-wrong" : ""
           } guess-button`}
@@ -371,7 +263,6 @@ export default function Flags() {
           {button1}
         </button>
         <button
-          disabled={isDisabled}
           className={`${correct2 ? "guess-correct" : ""} ${
             wrongButton === 2 ? "guess-wrong" : ""
           } guess-button`}
@@ -380,7 +271,6 @@ export default function Flags() {
           {button2}
         </button>
         <button
-          disabled={isDisabled}
           className={`${correct3 ? "guess-correct" : ""} ${
             wrongButton === 3 ? "guess-wrong" : ""
           } guess-button`}
@@ -389,7 +279,6 @@ export default function Flags() {
           {button3}
         </button>
         <button
-          disabled={isDisabled}
           className={`${correct4 ? "guess-correct" : ""} ${
             wrongButton === 4 ? "guess-wrong" : ""
           } guess-button`}
