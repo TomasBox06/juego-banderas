@@ -1,89 +1,12 @@
 import { useEffect, useState } from "react";
 
-import ale from "../assets/easy/ale.png";
-import arg from "../assets/easy/arg.jpg";
-import bra from "../assets/easy/bra.png";
-import can from "../assets/easy/can.png";
-import col from "../assets/easy/col.png";
-import grb from "../assets/easy/grb.png";
-import mex from "../assets/easy/mex.png";
-import per from "../assets/easy/per.png";
-import por from "../assets/easy/por.png";
-import uru from "../assets/easy/uru.png";
-import usa from "../assets/easy/usa.png";
-import ven from "../assets/easy/ven.png";
-import par from "../assets/easy/par.png";
-import ita from "../assets/easy/ita.png";
-import esp from "../assets/easy/esp.png";
-import fra from "../assets/easy/fra.png";
-import ecu from "../assets/easy/ecu.png";
-import chi from "../assets/easy/chi.png";
-import bol from "../assets/easy/bol.png";
-
-import alb from "../assets/medium/alb.png";
-import and from "../assets/medium/and.png";
-import ara from "../assets/medium/ara.png";
-import aze from "../assets/medium/aze.png";
-import aus from "../assets/medium/aus.png";
-import bel from "../assets/medium/bel.png";
-import arm from "../assets/medium/arm.png";
-import belg from "../assets/medium/belg.png";
-import bie from "../assets/medium/bie.png";
-import bul from "../assets/medium/bul.png";
-import corn from "../assets/medium/corn.png";
-import cors from "../assets/medium/cors.png";
-import china from "../assets/medium/chi.png";
-import bos from "../assets/medium/bos.png";
-import cos from "../assets/medium/cos.png";
-import cro from "../assets/medium/cro.png";
-import din from "../assets/medium/din.png";
-import esc from "../assets/medium/esc.png";
-import esl from "../assets/medium/esl.png";
-import eslo from "../assets/medium/eslo.png";
-import est from "../assets/medium/est.png";
-import fin from "../assets/medium/fin.png";
-import gal from "../assets/medium/gal.png";
-import geo from "../assets/medium/geo.png";
-import gre from "../assets/medium/gre.png";
-import gua from "../assets/medium/gua.png";
-import guy from "../assets/medium/guy.png";
-import hon from "../assets/medium/hon.png";
-import hun from "../assets/medium/hun.png";
-import ing from "../assets/medium/ing.png";
-
-import alg from "../assets/hard/alg.png";
-import ang from "../assets/hard/ang.png";
-import ban from "../assets/hard/ban.png";
-import ben from "../assets/hard/ben.png";
-import bot from "../assets/hard/bot.png";
-import bur from "../assets/hard/bur.png";
-import buru from "../assets/hard/buru.png";
-import cam from "../assets/hard/cam.png";
-import cap from "../assets/hard/cap.png";
-import cen from "../assets/hard/cen.png";
-import com from "../assets/hard/com.png";
-import cot from "../assets/hard/cot.png";
-import dem from "../assets/hard/dem.png";
-import egy from "../assets/hard/egy.png";
-import eth from "../assets/hard/eth.png";
-import fij from "../assets/hard/fij.png";
-import gab from "../assets/hard/gab.png";
-import gha from "../assets/hard/gha.png";
-import kuw from "../assets/hard/kuw.png";
-import kyr from "../assets/hard/kyr.png";
-import jor from "../assets/hard/jor.png";
-import mal from "../assets/hard/mal.png";
-import mor from "../assets/hard/mor.png";
-import moz from "../assets/hard/moz.png";
-import nau from "../assets/hard/nau.png";
-import nep from "../assets/hard/nep.png";
-
 export default function Flags() {
   let [data, setData] = useState(null);
 
   fetch("http://localhost:3000/0")
     .then((response) => response.json())
     .then((data) => {
+      console.log(data);
       setData(data);
     })
     .catch((error) => console.error("Error:", error));
@@ -131,37 +54,38 @@ export default function Flags() {
     const newFlag3 = data[randomIndex3];
     const newFlag4 = data[randomIndex4];
 
+    console.log(newFlag2);
     setNewFlag(newFlag);
 
     const randomIndexButtons = Math.floor(Math.random() * 4);
     if (randomIndexButtons === 0) {
-      setButton1(newFlag.name);
-      setButton2(newFlag2.name);
-      setButton3(newFlag3.name);
-      setButton4(newFlag4.name);
+      setButton1(newFlag.translations.es);
+      setButton2(newFlag2.translations.es);
+      setButton3(newFlag3.translations.es);
+      setButton4(newFlag4.translations.es);
     } else if (randomIndexButtons === 1) {
-      setButton2(newFlag.name);
-      setButton1(newFlag2.name);
-      setButton3(newFlag3.name);
-      setButton4(newFlag4.name);
+      setButton2(newFlag.translations.es);
+      setButton1(newFlag2.translations.es);
+      setButton3(newFlag3.translations.es);
+      setButton4(newFlag4.translations.es);
     } else if (randomIndexButtons === 2) {
-      setButton3(newFlag.name);
-      setButton1(newFlag2.name);
-      setButton2(newFlag3.name);
-      setButton4(newFlag4.name);
+      setButton3(newFlag.translations.es);
+      setButton1(newFlag2.translations.es);
+      setButton2(newFlag3.translations.es);
+      setButton4(newFlag4.translations.es);
     } else {
-      setButton4(newFlag.name);
-      setButton1(newFlag2.name);
-      setButton2(newFlag3.name);
-      setButton3(newFlag4.name);
+      setButton4(newFlag.translations.es);
+      setButton1(newFlag2.translations.es);
+      setButton2(newFlag3.translations.es);
+      setButton3(newFlag4.translations.es);
     }
     setPlay(true);
-    if (level <= 3) {
+    if (level <= 8) {
       setStartButton("SIGUIENTE");
       setModal(false);
-    } else if (level === 4) {
+    } else if (level === 9) {
       setStartButton("RESULTADOS");
-    } else if (level === 5) {
+    } else if (level === 10) {
       setModal(true);
       setFinalScore(score);
       setLevel(0);
@@ -171,7 +95,7 @@ export default function Flags() {
   };
 
   const checkButton1 = () => {
-    if (button1 == newFlag.name) {
+    if (button1 == newFlag.translations.es) {
       setCorrect(true);
       setCorrect2(false);
       setCorrect3(false);
@@ -188,7 +112,7 @@ export default function Flags() {
     setPlay(false);
   };
   const checkButton2 = () => {
-    if (button2 == newFlag.name) {
+    if (button2 == newFlag.translations.es) {
       setCorrect(false);
       setCorrect2(true);
       setCorrect3(false);
@@ -205,7 +129,7 @@ export default function Flags() {
     setPlay(false);
   };
   const checkButton3 = () => {
-    if (button3 == newFlag.name) {
+    if (button3 == newFlag.translations.es) {
       setCorrect(false);
       setCorrect2(false);
       setCorrect3(true);
@@ -222,7 +146,7 @@ export default function Flags() {
     setPlay(false);
   };
   const checkButton4 = () => {
-    if (button4 == newFlag.name) {
+    if (button4 == newFlag.translations.es) {
       setCorrect(false);
       setCorrect2(false);
       setCorrect3(false);
@@ -241,56 +165,60 @@ export default function Flags() {
 
   return (
     <>
-      <header className="header-container">
-        <div className="header">
-          <p>Puntuación: {score}</p>
-          <p>{level}/5</p>
+      <div className="container">
+        <header className="header-container">
+          <div className="header">
+            <p>Puntuación: {score}</p>
+            <p>{level}/10</p>
+          </div>
+          <div
+            className={play ? "header-line--animation" : "header-line"}
+          ></div>
+        </header>
+        <div className="flags-container">
+          <div className="flags">
+            {newFlag && <img src={newFlag.flag} alt="country flag" />}
+          </div>
         </div>
-        <div className={play ? "header-line--animation" : "header-line"}></div>
-      </header>
-      <div className="flags-container">
-        <div className="flags">
-          {newFlag && <img src={newFlag.flag} alt="country flag" />}
-        </div>
-      </div>
-      <div className="guess">
-        <button
-          className={`${correct ? "guess-correct" : ""} ${
-            wrongButton === 1 ? "guess-wrong" : ""
-          } guess-button`}
-          onClick={checkButton1}
-        >
-          {button1}
-        </button>
-        <button
-          className={`${correct2 ? "guess-correct" : ""} ${
-            wrongButton === 2 ? "guess-wrong" : ""
-          } guess-button`}
-          onClick={checkButton2}
-        >
-          {button2}
-        </button>
-        <button
-          className={`${correct3 ? "guess-correct" : ""} ${
-            wrongButton === 3 ? "guess-wrong" : ""
-          } guess-button`}
-          onClick={checkButton3}
-        >
-          {button3}
-        </button>
-        <button
-          className={`${correct4 ? "guess-correct" : ""} ${
-            wrongButton === 4 ? "guess-wrong" : ""
-          } guess-button`}
-          onClick={checkButton4}
-        >
-          {button4}
-        </button>
-        {!play && (
-          <button className="guess-start" onClick={randomizeFlags}>
-            {startButton}
+        <div className="guess">
+          <button
+            className={`${correct ? "guess-correct" : ""} ${
+              wrongButton === 1 ? "guess-wrong" : ""
+            } guess-button`}
+            onClick={checkButton1}
+          >
+            {button1}
           </button>
-        )}
+          <button
+            className={`${correct2 ? "guess-correct" : ""} ${
+              wrongButton === 2 ? "guess-wrong" : ""
+            } guess-button`}
+            onClick={checkButton2}
+          >
+            {button2}
+          </button>
+          <button
+            className={`${correct3 ? "guess-correct" : ""} ${
+              wrongButton === 3 ? "guess-wrong" : ""
+            } guess-button`}
+            onClick={checkButton3}
+          >
+            {button3}
+          </button>
+          <button
+            className={`${correct4 ? "guess-correct" : ""} ${
+              wrongButton === 4 ? "guess-wrong" : ""
+            } guess-button`}
+            onClick={checkButton4}
+          >
+            {button4}
+          </button>
+          {!play && (
+            <button className="guess-start" onClick={randomizeFlags}>
+              {startButton}
+            </button>
+          )}
+        </div>
       </div>
       {modal && (
         <div className="modal-container">
