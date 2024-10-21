@@ -4,7 +4,14 @@
   align-items: center;
   padding-top: 40px;
   position: relative;
+  &-container {
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   & img {
     width: 390px;
+    height: auto;
   }
 }

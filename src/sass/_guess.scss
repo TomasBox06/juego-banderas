@@ -38,4 +38,19 @@
     @include mix.guess-button;
     background-color: red;
   }
+
+  .guess-button:disabled {
+    opacity: 1; /* Asegúrate de que la opacidad no sea reducida por defecto */
+    cursor: default; /* Cambia el cursor para indicar que el botón está deshabilitado */
+  }
+
+  .guess-button.guess-correct:disabled {
+    background-color: green; /* Color verde, por ejemplo, para respuestas correctas */
+    color: white; /* Asegura que el texto sea visible */
+  }
+
+  .guess-button.guess-wrong:disabled {
+    background-color: red; /* Color rojo, por ejemplo, para respuestas incorrectas */
+    color: white; /* Asegura que el texto sea visible */
+  }
 }
